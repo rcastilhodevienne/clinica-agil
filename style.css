@@ -1,0 +1,78 @@
+:root {
+    --primary: #0284c7; /* Azul Médico */
+    --primary-dark: #0369a1;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --success: #10b981;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', system-ui, sans-serif; }
+
+body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.5; }
+
+.container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+
+/* Top Bar */
+.top-bar { background: var(--card-bg); box-shadow: 0 1px 3px rgba(0,0,0,0.05); padding: 15px 0; margin-bottom: 30px; }
+.header-content { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 24px; color: var(--primary); }
+.logo strong { color: var(--text-main); }
+.badge-status { background: #e0f2fe; color: var(--primary-dark); padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+
+/* Cards & Layout */
+.card { background: var(--card-bg); border-radius: 16px; padding: 30px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05); margin-bottom: 20px; }
+.escondido { display: none !important; }
+.fade-in { animation: fadeIn 0.4s ease-in; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+h2 { font-size: 20px; margin-bottom: 20px; color: var(--text-main); }
+.header-passo { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; margin-bottom: 20px; }
+.header-passo h2 { margin: 0; border: none; padding: 0; }
+.subtitulo-medico { color: var(--primary); font-weight: 600; margin-bottom: 20px; }
+
+/* Botões Especialistas */
+.grid-especialistas { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+.card-especialista { border: 2px solid var(--border-color); border-radius: 12px; padding: 20px; text-align: center; cursor: pointer; transition: all 0.2s; background: transparent; }
+.card-especialista:hover, .card-especialista.ativo { border-color: var(--primary); background: #f0f9ff; }
+.avatar { font-size: 40px; margin-bottom: 10px; }
+.nome-esp { font-weight: bold; font-size: 16px; display: block; }
+.area-esp { color: var(--text-muted); font-size: 14px; }
+
+/* Horários */
+.dias-semana { display: flex; gap: 10px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 5px; }
+.dia-btn { flex: 1; min-width: 60px; padding: 10px; border: 1px solid var(--border-color); border-radius: 8px; background: white; cursor: pointer; font-weight: 600; color: var(--text-muted); }
+.dia-btn.ativo { background: var(--primary); color: white; border-color: var(--primary); }
+
+.grid-horarios { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; }
+.horario-btn { padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; background: white; font-weight: bold; cursor: pointer; transition: 0.2s; }
+.horario-btn:hover { border-color: var(--primary); color: var(--primary); }
+
+/* Formulário */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.input-group { display: flex; flex-direction: column; gap: 8px; }
+.full-width { grid-column: span 2; }
+.input-group label { font-size: 14px; font-weight: 600; color: var(--text-main); }
+input, select { padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 15px; outline: none; transition: 0.2s; }
+input:focus, select:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1); }
+
+.resumo-agendamento { background: #f0f9ff; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary); margin-bottom: 20px; font-size: 15px; }
+
+/* Botões de Ação */
+.btn-primario { background: var(--primary); color: white; border: none; padding: 15px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+.btn-primario:hover { background: var(--primary-dark); }
+.btn-secundario { background: transparent; color: var(--primary); border: 2px solid var(--primary); padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; }
+.btn-voltar { background: transparent; color: var(--text-muted); border: none; font-weight: 600; cursor: pointer; text-decoration: underline; }
+.mt-20 { margin-top: 20px; }
+
+/* Modal de Automação */
+.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; padding: 20px; }
+.modal-content { background: white; padding: 40px; border-radius: 16px; max-width: 500px; width: 100%; text-align: center; }
+.icone-sucesso { font-size: 60px; margin-bottom: 20px; }
+.painel-automacao { background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; margin-top: 25px; text-align: left; }
+.painel-automacao h3 { font-size: 14px; color: var(--text-muted); margin-bottom: 15px; text-transform: uppercase; }
+.painel-automacao ul { list-style: none; }
+.painel-automacao li { margin-bottom: 10px; font-size: 14px; font-weight: 600; color: var(--text-main); }
+.auto-ok { color: var(--success) !important; }

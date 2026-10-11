@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Ágil - Agendamento Inteligente</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="top-bar">
+        <div class="container header-content">
+            <div class="logo">🩺 Clínica<strong>Ágil</strong></div>
+            <span class="badge-status">Atendimento de Seg a Sáb</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Passo 1: Especialistas -->
+        <section id="passo-1" class="card fade-in">
+            <h2>1. Selecione o Especialista</h2>
+            <div class="grid-especialistas" id="lista-especialistas">
+                <!-- Injetados via JavaScript -->
+            </div>
+        </section>
+
+        <!-- Passo 2: Agenda (Escondido inicialmente) -->
+        <section id="passo-2" class="card escondido fade-in">
+            <div class="header-passo">
+                <h2>2. Escolha o Horário</h2>
+                <button class="btn-voltar" onclick="voltarPasso(1)">Voltar</button>
+            </div>
+            <p id="nome-medico-selecionado" class="subtitulo-medico"></p>
+            
+            <div class="dias-semana">
+                <button class="dia-btn ativo">Seg</button>
+                <button class="dia-btn">Ter</button>
+                <button class="dia-btn">Qua</button>
+                <button class="dia-btn">Qui</button>
+                <button class="dia-btn">Sex</button>
+                <button class="dia-btn">Sáb</button>
+            </div>
+
+            <div class="grid-horarios" id="lista-horarios">
+                <!-- Injetados via JavaScript -->
+            </div>
+        </section>
+
+        <!-- Passo 3: Dados do Paciente -->
+        <section id="passo-3" class="card escondido fade-in">
+            <div class="header-passo">
+                <h2>3. Seus Dados</h2>
+                <button class="btn-voltar" onclick="voltarPasso(2)">Voltar</button>
+            </div>
+            
+            <div class="resumo-agendamento" id="resumo-escolha"></div>
+
+            <form id="form-paciente" class="form-grid" onsubmit="finalizarAgendamento(event)">
+                <div class="input-group full-width">
+                    <label>Nome Completo</label>
+                    <input type="text" id="paciente-nome" required placeholder="Ex: Maria da Silva">
+                </div>
+                <div class="input-group">
+                    <label>Telefone / WhatsApp</label>
+                    <input type="tel" id="paciente-tel" required placeholder="(00) 00000-0000">
+                </div>
+                <div class="input-group">
+                    <label>Tipo de Atendimento</label>
+                    <select id="paciente-plano" required>
+                        <option value="Particular">Particular</option>
+                        <option value="Unimed">Unimed</option>
+                        <option value="Bradesco Saude">Bradesco Saúde</option>
+                        <option value="Amil">Amil</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primario full-width mt-20">Confirmar Agendamento</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Modal de Sucesso e Automação -->
+    <div id="modal-sucesso" class="modal-overlay escondido">
+        <div class="modal-content">
+            <div class="icone-sucesso">✅</div>
+            <h2>Agendamento Confirmado!</h2>
+            <p>Seu horário foi reservado com sucesso.</p>
+            
+            <div class="painel-automacao">
+                <h3>⚡ Automações Disparadas no Sistema:</h3>
+                <ul>
+                    <li id="auto-recepcao">⏳ Notificando Receção...</li>
+                    <li id="auto-medico">⏳ Sincronizando agenda do médico...</li>
+                </ul>
+            </div>
+            
+            <button class="btn-secundario mt-20" onclick="location.reload()">Novo Agendamento</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
